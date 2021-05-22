@@ -10,6 +10,9 @@ project(tbot3_practice)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
+  move_base
+  move_base_msgs
+  geometry_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -69,7 +72,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate added messages and services with any dependencies listed here
 # generate_messages(
 #   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
+# #   std_msgs  # Or other packages containing msgs
+#   geometry_msgs
 # )
 
 ################################################
@@ -102,7 +106,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+ INCLUDE_DIRS include
 #  LIBRARIES tbot3_practice
 #  CATKIN_DEPENDS roscpp rospy
 #  DEPENDS system_lib
@@ -115,7 +119,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -203,3 +207,6 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+add_executable(move_to_goal src/move_to_goal.cpp)
+target_link_libraries(move_to_goal ${catkin_LIBRARIES})

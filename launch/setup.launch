@@ -1,0 +1,7 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<launch>
+    <node name="static_tf0" pkg="tf" type="static_transform_publisher" args="2 0 0 0 0 0 /map /base_link 100"/>
+    <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_house.launch"/>
+    <include file="$(find tbot3_practice)/launch/turtlebot3_navigation.launch"/>
+</launch>

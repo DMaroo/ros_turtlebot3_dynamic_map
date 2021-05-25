@@ -8,10 +8,10 @@
   <!-- move_base -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
       <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS"/>
-      <rosparam file="$(find turtlebot3_navigation)/param/costmap_common_params_$(arg model).yaml" command="load" ns="global_costmap" />
-      <rosparam file="$(find turtlebot3_navigation)/param/costmap_common_params_$(arg model).yaml" command="load" ns="local_costmap" />
-      <!-- <rosparam file="$(find turtlebot3_navigation)/param/local_costmap_params.yaml" command="load" /> -->
-      <!-- <rosparam file="$(find turtlebot3_navigation)/param/global_costmap_params.yaml" command="load" /> -->
+      <rosparam file="$(find tbot3_practice)/param/costmap_common_params_burger.yaml" command="load" ns="global_costmap" />
+      <rosparam file="$(find tbot3_practice)/param/costmap_common_params_burger.yaml" command="load" ns="local_costmap" />
+      <rosparam file="$(find tbot3_practice)/param/local_costmap_params.yaml" command="load" />
+      <rosparam file="$(find tbot3_practice)/param/global_costmap_params.yaml" command="load" />
       <rosparam />
       <rosparam file="$(find turtlebot3_navigation)/param/move_base_params.yaml" command="load" />
       <rosparam file="$(find turtlebot3_navigation)/param/dwa_local_planner_params_$(arg model).yaml" command="load" />
@@ -20,6 +20,7 @@
       <param name="DWAPlannerROS/min_vel_x" value="0.0" if="$(arg move_forward_only)" />
   </node>
   
-  <node name="static_tf0" pkg="tf" type="static_transform_publisher" args="2 0 0 0 0 0 /map /base_footprint 100"/>
+  <!-- <node name="my_tf" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 /map /base_scan 100"/> -->
+  <!-- <node name="my_tf2" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 /base_link /odom 100"/> -->
   
 </launch>

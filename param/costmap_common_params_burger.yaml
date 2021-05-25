@@ -4,14 +4,19 @@ raytrace_range: 3.5
 footprint: [[-0.105, -0.105], [-0.105, 0.105], [0.041, 0.105], [0.041, -0.105]]
 #robot_radius: 0.105
 
+# plugins: []
 plugins: 
+    - {name: static_map,       type: "costmap_2d::StaticLayer"}
     - {name: obstacles,        type: "costmap_2d::VoxelLayer"}
 
-inflation_radius: 1.0
-cost_scaling_factor: 3.0
+inflation_radius: 20.0
+cost_scaling_factor: 0.2
 
 map_type: costmap
 obstacles:
   observation_sources: scan
   scan: {sensor_frame: base_scan, data_type: LaserScan, topic: scan, marking: true, clearing: true}
   # scan: {data_type: LaserScan, sensor_frame: /base_laser_link, clearing: true, marking: true, topic: /base_scan}
+static_map:
+  observation_sources: map
+  scan: {sensor_frame: base_scan, data_type: LaserScan, topic: scan, marking: true, clearing: true}

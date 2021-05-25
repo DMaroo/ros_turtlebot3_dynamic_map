@@ -9,8 +9,8 @@ plugins:
     - {name: static_map,       type: "costmap_2d::StaticLayer"}
     - {name: obstacles,        type: "costmap_2d::VoxelLayer"}
 
-inflation_radius: 20.0
-cost_scaling_factor: 0.2
+inflation_radius: 1.0
+cost_scaling_factor: 20.0
 
 map_type: costmap
 obstacles:

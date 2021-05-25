@@ -3,6 +3,6 @@
 <launch>
     <!-- <node name="static_tf0" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 /base_footprint /map 100"/> -->
     <node name="gmapping" pkg="gmapping" type="slam_gmapping"/>
-    <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_house.launch"/>
+    <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_world.launch"/>
     <include file="$(find tbot3_practice)/launch/turtlebot3_navigation.launch"/>
 </launch>

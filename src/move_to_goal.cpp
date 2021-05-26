@@ -13,13 +13,16 @@ int main(int argc, char* argv[])
 
     std::string state = "";
 
+    geometry_msgs::PoseStamped goal;
+
+    goal.header.seq = 0;
+
     while (ros::ok())
     {
         std::cout << termcolor::color<100, 100, 100> << termcolor::bold << "[?]" << termcolor::reset << " To exit the program, enter \"" << termcolor::red << "exit" << termcolor::reset << "\" as any one of the inputs\n\n";
 
         std::cout << termcolor::blue << termcolor::bold << "[=]" << termcolor::reset << " Please enter the goal position (format: <x y>) : ";
 
-        geometry_msgs::PoseStamped goal;
 
         std::cin >> state;
 
@@ -71,6 +74,7 @@ int main(int argc, char* argv[])
             goal.pose.orientation.w = atof(state.c_str());
         }
 
+        goal.header.seq++;
 
         goal.header.frame_id = "map";
 
@@ -79,7 +83,6 @@ int main(int argc, char* argv[])
         goal.pose.orientation.x = 0.0;
         goal.pose.orientation.y = 0.0;
 
-        goal.header.seq = 1;
         goal.header.stamp = ros::Time::now();
 
         std::cout << "\n" << termcolor::yellow << termcolor::bold << "[*]" << termcolor::reset << " Publishing the input parameters to the concerned node...\n";
